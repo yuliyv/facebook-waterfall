@@ -1,159 +1,3 @@
-var quoteList = [ 
-	{
-		quote: "I have just three things to teach: simplicity, patience, compassion. These three are your greatest treasures.",
-		source: "Lao Tzu"
-	},
-	{
-		quote: "In character, in manner, in style, in all things, the supreme excellence is simplicity.",
-		source: "Henry Wadsworth Longfellow"
-	},
-	{
-		quote: "If we don't discipline ourselves, the world will do it for us.",
-		source: "William Feather"
-	},
-	{
-		quote: "Rule your mind or it will rule you.",
-		source: "Horace"
-	},
-	{
-		quote: "All that we are is the result of what we have thought.",
-		source: "Buddha"
-	},
-	{
-		quote: "Doing just a little bit during the time we have available puts you that much further ahead than if you took no action at all.",
-		source: "Pulsifer, Take Action; Don't Procrastinate"
-	},
-	{
-		quote: "Never leave that till tomorrow which you can do today.",
-		source: "Benjamin Franklin"
-	},
-	{
-		quote: "Procrastination is like a credit card: it's a lot of fun until you get the bill.",
-		source: "Christopher Parker"
-	},
-	{
-		quote: "Someday is not a day of the week.",
-		source: "Author Unknown"
-	},
-	{
-		quote: "Tomorrow is often the busiest day of the week.",
-		source: "Spanish Proverb"
-	},
-	{
-		quote: "I can accept failure, everyone fails at something. But I can't accept not trying.",
-		source: "Michael Jordan"
-	},
-	{
-		quote: "There’s a myth that time is money. In fact, time is more precious than money. It’s a nonrenewable resource. Once you’ve spent it, and if you’ve spent it badly, it’s gone forever.",
-		source: "Neil A. Fiore"
-	},
-	{
-		quote: "Nothing can stop the man with the right mental attitude from achieving his goal; nothing on earth can help the man with the wrong mental attitude.",
-		source: "Thomas Jefferson"
-	},
-	{
-		quote: "There is only one success--to be able to spend your life in your own way.",
-		source: "Christopher Morley"
-	},
-	{
-		quote: "Success is the good fortune that comes from aspiration, desperation, perspiration and inspiration.",
-		source: "Evan Esar"
-	},
-	{
-		quote: "We are still masters of our fate. We are still captains of our souls.",
-		source: "Winston Churchill"
-	},
-	{
-		quote: "Our truest life is when we are in dreams awake.",
-		source: "Henry David Thoreau"
-	},
-	{
-		quote: "The best way to make your dreams come true is to wake up.",
-		source: "Paul Valery"
-	},
-	{
-		quote: "Life without endeavor is like entering a jewel mine and coming out with empty hands.",
-		source: "Japanese Proverb"
-	},
-	{
-		quote: "Happiness does not consist in pastimes and amusements but in virtuous activities.",
-		source: "Aristotle"
-	},
-    {
-        quote: "By constant self-discipline and self-control, you can develop greatness of character.",
-        source: "Grenville Kleiser"
-    },
-    {
-        quote: "The difference between a successful person and others is not a lack of strength, not a lack of knowledge, but rather a lack in will.",
-        source: "Vince Lombardi Jr."
-    },
-    {
-        quote: "At the end of the day, let there be no excuses, no explanations, no regrets.",
-        source: "Steve Maraboli"
-    },
-    {
-        quote: "Inaction will cause a man to sink into the slough of despond and vanish without a trace.",
-        source: "Farley Mowat"
-    },
-    {
-        quote: "True freedom is impossible without a mind made free by discipline.",
-        source: "Mortimer J. Adler"
-    },
-    {
-        quote: "The most powerful control we can ever attain, is to be in control of ourselves.",
-        source: "Chris Page"
-    },
-    {
-        quote: "Idleness is only the refuge of weak minds, and the holiday of fools.",
-        source: "Philip Dormer Stanhope"
-    },
-    {
-        quote: "This is your life and it's ending one minute at a time.",
-        source: "Tyler Durden, Fight Club"
-    },
-	{
-		quote: "You create opportunities by performing, not complaining.",
-		source: "Muriel Siebert"
-	},
-	{
-		quote: "Great achievement is usually born of great sacrifice, and is never the result of selfishness.",
-		source: "Napoleon Hill"
-	},
-
-	{
-		quote: "Whether you think you can, or you think you can't, you're right.",
-		source: "Henry Ford"
-	},
-	{
-		quote: "Even if I knew that tomorrow the world would go to pieces, I would still plant my apple tree.",
-		source: "Martin Luther"
-	}
-];
-
-
-var selectedQuote = quoteList[Math.floor(Math.random() * quoteList.length)];
-
-var quoteDiv, quoteText, quoteSource, fbLink, infoPanel, taikoPic;
-
-quoteDiv = $("<div class='nfe-quote'/>");
-
-// Info panel, hidden by default
-infoPanel = $("<div class='nfe-info-panel'></div>")
-    .hide()
-    .appendTo(quoteDiv);
-
-quoteText = $("<p>“"+selectedQuote.quote+"”</p>")
-    .addClass('nfe-quote-text')
-    .appendTo(quoteDiv);
-
-quoteSource = $("<p>~ "+selectedQuote.source+"</p>")
-    .addClass('nfe-quote-source')
-    .appendTo(quoteDiv);
-
-var hideInfoPanel = function(){
-    $('div.nfe-info-panel').hide();
-}
-
 var extensionURL = function(relativeURL){
     if(window.chrome !== undefined){
         // Chrome extension
@@ -162,45 +6,126 @@ var extensionURL = function(relativeURL){
         // Firefox extension
         return self.options.urls[relativeURL];
     }
-}
+};
 
-fbLink = $("<a href='javascript:;'>News Feed Eradicator :)</a>")
-    .addClass('nfe-info-link')
-    .on('click', function(){
-      var handleClose = function() {
-        $('.nfe-close-button').on('click', hideInfoPanel);
-      };
-      var url = 'info-panel.html';
+chrome.storage.sync.get({
+    overlayText: 'time is running out',
+    overlayStyle: '',
+    imageUrl: null,
+    future: "01/27/2100",
+    useCountdown: false,
+    countdownText: "until...",
+    countdownStyle: '',
+    hideLeft: false,
+    hideRight: false,
+    hideComposer: false,
+    hideTop: false,
+    hideTrending: true,
+    hideTicker: true
+}, function(items) {
+    // This delay ensures that the elements have been created by Facebook's
+    // scripts before we attempt to replace them
+    setInterval(function(){
+        /**
+         * HTML for the Waterfall and countdown timer.  Here is where we need to insert the waterfall overlay text.
+         * @type {string}
+         */
+        var waterHTML = "<div class='waterfall' style='" + items.overlayStyle + "'>" + items.overlayText + "</div>" +
+            "<div id='futureCountdown' class='ticker' style='" + items.countdownStyle + "'></div>";
 
-      if (window.chrome !== undefined) {
-        // Chrome extension
-        infoPanel.load(chrome.extension.getURL(url),
-                       handleClose);
-      } else {
-        // Firefox extension
-        self.port.emit('requestUrl', url);
-        self.port.once(url, function(data) {
-          console.log("Received data for ", url);
-          infoPanel.html(data);
-          handleClose();
+        /**
+         * Generate the DIV for displaying the waterfall div which will replace the newsfeed.
+         * @type {*|jQuery|HTMLElement}
+         */
+        var waterDiv = $(waterHTML);
+
+        // Replace the news feed
+        $("div#pagelet_home_stream").replaceWith(waterDiv);
+        $("div[id^='topnews_main_stream']").replaceWith(waterDiv);
+
+        // Fade in the waterfall
+        var waterfalls = $(".waterfall");
+        waterfalls.fadeIn(2000, function(){
+            $("#futureCountdown").fadeIn(1000, function() {});
         });
-      }
-      infoPanel.show();
-    })
-	.appendTo(quoteDiv);
 
-// This delay ensures that the elements have been created by Facebook's
-// scripts before we attempt to replace them
-setInterval(function(){
-    // Replace the news feed
-	$("div#pagelet_home_stream").replaceWith(quoteDiv);
-	$("div[id^='topnews_main_stream']").replaceWith(quoteDiv);
+        // Update the background image of the waterfall if there is a custom image URL specified
+        if (items.imageUrl) {
+            waterfalls.css('background-image', 'url("' + items.imageUrl + '")');
+        }
 
-    // Delete the ticker
-    $("div#pagelet_ticker").remove();
+        // Fade out and delete the top bar
+        if (items.hideTop) {
+            $("#pagelet_bluebar").fadeOut( "fast", function() {
+                $("#pagelet_bluebar").remove();
+            });
+        }
 
-    // Delete the trending box
-    $("div#pagelet_trending_tags_and_topics").remove();
-}, 1000);
+        // Fade out and delete the ticker
+        if (items.hideTicker) {
+            $("div#pagelet_ticker").remove();
+        }
+
+        // Fade out and delete the right column
+        if (items.hideRight) {
+            $("#rightCol").fadeOut( "fast", function() {
+                $("#rightCol").remove();
+            });
+        }
+
+        // Fade out and delete the left column
+        if (items.hideLeft) {
+            $("#leftCol").fadeOut("fast", function() {
+                $("#leftCol").remove();
+            });
+        }
+
+        // Fade out and delete the post composer
+        if (items.hideComposer) {
+            $("#pagelet_composer").fadeOut("fast", function() {
+                $("#pagelet_composer").remove();
+            });
+        }
+
+        // Fade out and delete the trending box
+        if (items.hideTrending) {
+            $("div#pagelet_trending_tags_and_topics").remove();
+        }
+
+        // If we are using the countdown timer then we need to setup and interval to countdown to the future date.
+        if (items.useCountdown && document.getElementById("futureCountdown")) {
+            var target_date = new Date(items.future).getTime();
+
+            // variables for time units
+            var days, hours, minutes, seconds;
+
+            // update the tag with id "countdown" every 1 second
+            setInterval(function () {
+                // get tag element
+                var countdown = document.getElementById("futureCountdown");
+
+                // find the amount of "seconds" between now and target
+                var current_date = new Date().getTime();
+                var seconds_left = (target_date - current_date) / 1000;
+
+                // do some time calculations
+                days = parseInt(seconds_left / 86400);
+                seconds_left = seconds_left % 86400;
+
+                hours = parseInt(seconds_left / 3600);
+                seconds_left = seconds_left % 3600;
+
+                minutes = parseInt(seconds_left / 60);
+                seconds = parseInt(seconds_left % 60);
+
+                // format countdown string + set tag value
+                var countdownSlice = days + "d " + hours + "h " + minutes + "m " + seconds + "s";
+                if (countdown) {
+                    countdown.innerHTML = items.countdownText + "<br>" + countdownSlice;
+                }
+            }, 1000);
+        }
+    }, 1000);
+});
 
 
