@@ -1,7 +1,5 @@
-News Feed Eradicator
-====================
+Facebook Waterfall
+==================
 
-This Chrome extension deletes your facebook news feed
-and replaces it with a nice quote.
-
-[Install from Chrome Web Store](https://chrome.google.com/webstore/detail/news-feed-eradicator-for/fjcldmjmjhkklehbacihaiopjklihlgg?hl=en)
+This Chrome extension that allows you delete portions of your Facebook feed and replace them with a picture and text, based on
+the original plugin [News Feed Eradicator](https://github.com/jordwest/news-feed-eradicator).

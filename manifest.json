@@ -16,10 +16,6 @@
       "run_at": "document_idle"
     }
   ],
-  "web_accessible_resources": [
-    "taiko_tiny.png",
-    "taiko_bigger.png"
-  ],
   "browser_action": {
     "default_icon": "icon.png"
   },
